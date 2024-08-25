@@ -18,3 +18,6 @@ Simplified Implementation: A clear and concise implementation of the self-attent
 Customizable: Easily tweak the parameters to experiment with different configurations.
 Visualization Tools: Visualize attention weights to better understand how the model focuses on different parts of the input.
 Educational: Includes extensive comments and documentation to help newcomers understand the self-attention mechanism.
+
+
+<img alt="Multiheaded attention " src="0_jKqypwGzmDv7KDUZ.png" />
