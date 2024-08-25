@@ -29,9 +29,9 @@ class SelfAttention(nn.Module):
         queries = self.queries(query)  # (N, query_len, embed_size)
 
         # Split the embedding into self.heads different pieces
-        values = values.reshape(N, value_len, self.heads, self.head_dim)
-        keys = keys.reshape(N, key_len, self.heads, self.head_dim)
-        queries = queries.reshape(N, query_len, self.heads, self.head_dim)
+        values = values.reshape(N, value_len, self.heads, self.head_dim)  #spreading the last dimensions into 2 heads * head_dim   =  embed size 
+        keys = keys.reshape(N, key_len, self.heads, self.head_dim) #spreading the last dimensions into 2 heads * head_dim   =  embed size 
+        queries = queries.reshape(N, query_len, self.heads, self.head_dim) #spreading the last dimensions into 2 heads * head_dim   =  embed size 
 
         # Einsum does matrix mult. for query*keys for each training example
         # with every other training example, don't be confused by einsum
@@ -53,7 +53,7 @@ class SelfAttention(nn.Module):
         # attention shape: (N, heads, query_len, key_len)
 
         out = torch.einsum("nhql,nlhd->nqhd", [attention, values]).reshape(
-            N, query_len, self.heads * self.head_dim
+            N, query_len, self.heads * self.head_dim                         #squeesing the last 2 dimensions into one 
         )
         # attention shape: (N, heads, query_len, key_len)
         # values shape: (N, value_len, heads, heads_dim)
