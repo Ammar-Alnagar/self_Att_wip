@@ -105,6 +105,8 @@ class Encoder(nn.Module):
         max_length,
     ):
 
+
+
         super(Encoder, self).__init__()
         self.embed_size = embed_size
         self.device = device
@@ -155,6 +157,8 @@ class DecoderBlock(nn.Module):
         query = self.dropout(self.norm(attention + x))
         out = self.transformer_block(value, key, query, src_mask)
         return out
+
+
 
 
 class Decoder(nn.Module):
@@ -208,7 +212,7 @@ class Transformer(nn.Module):
         forward_expansion=4,
         heads=8,
         dropout=0,
-        device="cpu",
+        device="cuda",
         max_length=100,
     ):
 
