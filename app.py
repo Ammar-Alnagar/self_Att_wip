@@ -90,7 +90,7 @@ class TransformerBlock(nn.Module):
         out = self.dropout(self.norm2(forward + x))
         return out
 
-
+ 
 class Encoder(nn.Module):
     def __init__(
         self,
